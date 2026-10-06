@@ -1,0 +1,431 @@
+/* ============================================================
+   Programming Languages by Hannah — styles from the Figma file
+   ============================================================ */
+
+:root {
+  /* Colors taken from the Figma design */
+  --text: #292929;
+  --grey: #a7a7a7;
+  --grey-dark: #707070;
+  --blue: #429bc8;
+  --focus: #1355ad;
+  --error: #c92f27;
+  --success: #28670d;
+  --hover-bg: #fafafa;
+
+  --radius-card: 24px;
+  --radius: 10px;
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.1);
+  --shadow-btn: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+  /* Button fills (recreated from the button images in the design) */
+  --btn-primary: linear-gradient(100deg, #6cbbe4 0%, #2a9ad6 38%, #1f8dcf 72%, #1250ab 100%);
+  --btn-sub: radial-gradient(ellipse 62% 140% at 50% 50%, #ffffff 45%, #d3ebf6 100%);
+  --btn-sub-hover: radial-gradient(ellipse 90% 180% at 30% 50%, #ffffff 60%, #e3f2f9 100%);
+
+  /* Background art: export these from Figma into assets/img/
+     (see README). The gradient shows until they're there. */
+  --sky: linear-gradient(180deg, #5b9ef7 0%, #8fbdf9 55%, #dbeafc 100%);
+  --login-bg: url("../img/login-bg.png");
+  --signup-bg: url("../img/signup-bg.png");
+
+  --font: "Poppins", system-ui, sans-serif;
+  --font-btn: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "Poppins", sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body { margin: 0; min-height: 100%; }
+
+body {
+  font-family: var(--font);
+  color: var(--text);
+  line-height: 0.993;
+  background: var(--login-bg) center / cover no-repeat fixed, var(--sky);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, p { margin: 0; }
+a { color: var(--blue); }
+
+/* ---------- Page layouts ---------- */
+
+.login-layout {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 10px clamp(16px, 13.9vw, 200px);
+}
+
+.center-layout {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+}
+
+/* ---------- Card ---------- */
+
+.card {
+  width: 500px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 20px 16px;
+  border-radius: var(--radius-card);
+  background: linear-gradient(180deg, #fff 50%, rgba(255, 255, 255, 0.5) 100%);
+  box-shadow: var(--shadow-card);
+}
+
+.card-login { min-height: 700px; }
+
+.card-logo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0 10px;
+}
+
+.card-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 10px;
+}
+
+.card-heading { display: flex; flex-direction: column; gap: 8px; }
+.card-heading h1 { font-size: 20px; font-weight: 600; }
+.card-heading p  { font-size: 16px; }
+
+.card-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin: 2px -2px 0;
+}
+
+.or { color: var(--grey); font-family: var(--font-btn); font-size: 16px; }
+
+.card-foot { color: var(--blue); font-size: 16px; text-align: center; }
+.card-foot a { color: inherit; }
+
+/* ---------- Logo wordmark ---------- */
+
+.logo {
+  position: relative;
+  width: 188px;
+  height: 108px;
+  font-family: "Lobster", cursive;
+  line-height: 0.993;
+  flex-shrink: 0;
+}
+.logo-line {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo-line span {
+  display: block;
+  white-space: nowrap;
+  padding-right: 4px;
+  transform: rotate(-3.33deg);
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+.logo-programming { left: 0; top: 0; width: 167.5px; height: 46.3px; }
+.logo-programming span {
+  font-size: 34.5px;
+  letter-spacing: -3.1px;
+  background-image: linear-gradient(45deg, #9c9926 6.9%, #e4da61 51%);
+}
+.logo-languages { left: 0; top: 29.4px; width: 188px; height: 76.1px; }
+.logo-languages span {
+  font-size: 40.56px;
+  letter-spacing: -3.65px;
+  background-image: linear-gradient(86.4deg, #942148 10.7%, #bc6788 57.5%);
+}
+.logo-by { left: 81.7px; top: 68.4px; width: 97.7px; height: 39.6px; }
+.logo-by span {
+  font-size: 21.08px;
+  letter-spacing: -1.9px;
+  background-image: linear-gradient(86.4deg, #942148 10.7%, #bc6788 57.5%);
+}
+
+/* ---------- Form fields (Figma "Input Fields" states) ---------- */
+
+.field { position: relative; display: flex; flex-direction: column; gap: 8px; }
+.field-label { font-size: 16px; }
+
+.input {
+  height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  background: #fff;
+  border: 1px solid var(--grey);
+  border-radius: var(--radius);
+  transition: border-color 0.15s, background-color 0.15s;
+}
+.input:hover { background: var(--hover-bg); border-color: var(--grey-dark); }          /* Hover */
+.input:focus-within { background: #fff; border-color: var(--focus); }                   /* Focus */
+.input.is-error, .input.is-error:hover { border-color: var(--error); }                  /* Error */
+.input.is-ok, .input.is-ok:hover { border-color: var(--success); }                      /* Confirmed */
+
+.input input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  border: 0;
+  outline: 0;
+  padding: 0;
+  background: transparent;
+  font: 16px var(--font);
+  color: var(--text);
+}
+.input input::placeholder { color: var(--grey); opacity: 1; }
+
+.input-lead { display: flex; color: var(--grey); }
+
+.input-state { display: none; }
+.input-state-error { color: var(--error); }
+.input-state-ok { color: var(--success); }
+.input.is-error .input-state-error,
+.input.is-ok .input-state-ok { display: flex; }
+
+.input-eye {
+  display: flex;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--grey);
+  cursor: pointer;
+  border-radius: 4px;
+}
+.input-eye:hover { color: var(--grey-dark); }
+.input-eye:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.input-eye .icon-eye-off,
+.input-eye.is-visible .icon-eye { display: none; }
+.input-eye.is-visible .icon-eye-off { display: block; }
+
+.field-error { color: var(--error); font-size: 14px; line-height: 1.3; }
+.field-error[hidden] { display: none; }
+
+.field-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+
+.link-sm { font-size: 14px; color: var(--blue); text-decoration: none; }
+.link-sm:hover { text-decoration: underline; }
+
+.form-alert {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  background: #fdecea;
+  color: var(--error);
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+/* ---------- Checkbox (Figma "Checkbox w") ---------- */
+
+.check { display: inline-flex; align-items: flex-start; gap: 7px; cursor: pointer; }
+.check input { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
+.check-box {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 1px solid var(--blue);
+  border-radius: 3px;
+  color: var(--blue);
+}
+.check-box .icon { visibility: hidden; }
+.check:hover .check-box { background: linear-gradient(rgba(0,0,0,.05), rgba(0,0,0,.05)), #fff; }
+.check input:checked + .check-box .icon { visibility: visible; }
+.check input:focus-visible + .check-box { outline: 2px solid var(--focus); outline-offset: 2px; }
+.check-text { font-size: 14px; color: var(--text); line-height: 0.993; }
+
+.check-md .check-box { width: 20px; height: 20px; border-radius: 5px; }
+.check-md .check-text { font-size: 16px; line-height: 1.25; }
+.check-md { align-items: center; }
+
+.terms { display: flex; flex-direction: column; gap: 8px; }
+.terms a { text-decoration: none; }
+.terms a:hover { text-decoration: underline; }
+
+/* ---------- Buttons (Figma "Button" variants) ---------- */
+
+.btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 30px;
+  border: 0;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-btn);
+  font: 16px var(--font-btn);
+  text-decoration: none;
+  cursor: pointer;
+  transition: box-shadow 0.15s, background 0.15s;
+}
+.btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+.btn-primary { height: 46px; color: #fff; background: var(--btn-primary); }
+.btn-primary:hover { box-shadow: var(--shadow-btn), inset 0 0 0 999px rgba(0, 0, 0, 0.05); }  /* Hover */
+.btn-tall { height: auto; padding: 20px 30px; font-size: 14px; }
+
+.btn-sub { height: 48px; color: var(--blue); border: 1px solid var(--blue); background: var(--btn-sub); }
+.btn-sub:hover { background: var(--btn-sub-hover); }                                             /* Sub Hover */
+
+.full { width: 100%; }
+
+/* ---------- Sign-up modal ---------- */
+
+.page-register .modal-backdrop {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(41, 41, 41, 0.6);
+}
+
+.signup-modal {
+  position: relative;
+  width: 1000px;
+  max-width: 100%;
+  min-height: 800px;
+  display: flex;
+  justify-content: flex-end;
+  border-radius: var(--radius-card);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background: var(--signup-bg) center / cover no-repeat, var(--sky);
+}
+
+.card-signup {
+  min-height: 800px;
+  background: linear-gradient(180deg, #fff 43.27%, rgba(255, 255, 255, 0.5) 100%);
+}
+.card-signup .card-form { gap: 16px; padding: 0 10px; }
+.card-signup .card-heading { padding: 10px 0; }
+.card-signup .btn-tall { width: calc(100% + 20px); margin: 0 -10px; }
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 2;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--grey-dark);
+}
+.modal-close:hover { background: #f1f1f1; color: var(--text); }
+
+/* Password hint pop-up (Figma "Info pop up") */
+.info-pop {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 10px);
+  z-index: 5;
+  width: 300px;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+}
+.info-pop[hidden] { display: none; }
+.info-pop-body {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  padding: 10px 16px;
+  background: #fff;
+  border-radius: var(--radius);
+  font-size: 14px;
+  color: #000;
+  line-height: 1.3;
+}
+.info-pop-body::after {           /* the little tail at the bottom-left */
+  content: "";
+  position: absolute;
+  left: 22px;
+  bottom: -8px;
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  transform: rotate(45deg);
+  border-radius: 2px;
+}
+.info-pop-body > .icon { flex-shrink: 0; margin-top: 1px; }
+.info-pop ul { list-style: none; margin: 4px 0 0; padding: 0; }
+.info-pop li { color: var(--grey-dark); }
+.info-pop li::before { content: "✓ "; color: var(--grey); }
+.info-pop li.ok, .info-pop li.ok::before { color: var(--success); }
+
+/* ---------- Success card (Figma "Frame 321") ---------- */
+
+.card-success .success-title { width: 100%; font-size: 20px; font-weight: 500; }
+.card-success .success-text  { width: 100%; font-size: 16px; font-weight: 500; line-height: 1.3; }
+
+/* ---------- "Coming soon" toast ---------- */
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: calc(100% - 32px);
+  padding: 12px 16px;
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  font-size: 14px;
+  line-height: 1.3;
+  transform: translateX(-50%);
+  animation: toast-in 0.2s ease-out;
+}
+.toast[hidden] { display: none; }
+.toast .icon { flex-shrink: 0; color: var(--blue); }
+@keyframes toast-in { from { opacity: 0; transform: translate(-50%, 8px); } }
+
+/* ---------- Smaller screens ---------- */
+
+@media (max-width: 1100px) {
+  .login-layout { justify-content: center; padding: 24px 16px; }
+}
+
+@media (max-width: 1040px) {
+  /* Modal drops the illustration half and shows only the form card */
+  .signup-modal { width: 500px; min-height: 0; background: none; box-shadow: none; }
+  .card-signup { background: #fff; }
+}
+
+@media (max-width: 540px) {
+  .card-login, .card-signup { min-height: 0; }
+  .page-register .modal-backdrop { padding: 16px; }
+  .info-pop { width: 100%; }
+  .field-row { flex-wrap: wrap; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
