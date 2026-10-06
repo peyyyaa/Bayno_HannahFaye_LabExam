@@ -193,6 +193,10 @@ a { color: var(--blue); }
   color: var(--text);
 }
 .input input::placeholder { color: var(--grey); opacity: 1; }
+/* Hide the browser's own show-password eye (Microsoft Edge adds one),
+   so only the eye from the design appears. */
+.input input::-ms-reveal,
+.input input::-ms-clear { display: none; }
 
 .input-lead { display: flex; color: var(--grey); }
 
@@ -213,9 +217,9 @@ a { color: var(--blue); }
 }
 .input-eye:hover { color: var(--grey-dark); }
 .input-eye:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
-.input-eye .icon-eye-off,
-.input-eye.is-visible .icon-eye { display: none; }
-.input-eye.is-visible .icon-eye-off { display: block; }
+.input-eye .icon-eye,
+.input-eye.is-visible .icon-eye-off { display: none; }
+.input-eye.is-visible .icon-eye { display: block; }
 
 .field-error { color: var(--error); font-size: 14px; line-height: 1.3; }
 .field-error[hidden] { display: none; }
